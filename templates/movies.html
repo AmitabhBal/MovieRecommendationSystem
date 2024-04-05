@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='try.css') }}">
+<style>
+
+.top-right-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
+
+.wishlist-button {
+  background-color: #6CBAFE; /* Change background color as desired */
+  border: 1px solid #ccc; /* Add a border if needed */
+  border-radius: 10px; /* Add rounded corners */
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Customize icon appearance as needed */
+.wishlist-icon {
+  width: 20px;
+  height: 20px;
+  fill: black; /* Assuming a black wishlist icon */
+  margin-right: 5px;
+}
+</style>
+
+</head>
+<body>
+<div class="top-right-container">
+  <button class="wishlist-button">
+    <svg class="wishlist-icon">
+      <path d="M16 6l-4.18 4.18L11 12V3L16 6zM3.61 8.39l3.76 3.76-1.42 1.42-3.76-3.76-1.42-1.42z" />
+    </svg>
+    My Watchlist
+  </button>
+</div>
+<div class="dropdown">
+	    <li><a href="#" id="filter-btn" style="background-color: #AA336A; color: white">Filter By</a>
+    		<ul style="list-style-type: none;">
+      		<li><a href="#" id-"dropdown-content" style="background-color: #AA336A; color: white">Genre</a>
+        	<ul style="list-style-type: none;">
+          	<li><a href="#"style="background-color: #AA336A; color: white">Comedy</a></li>
+          <li><a href="#" style="background-color: #AA336A; color: white">Romance</a></li>
+          <li><a href="#"style="background-color: #AA336A; color: white">Action</a></li>
+        	</ul>
+		</div>
+	    </div>
+
+<script>
+const filterBtn = document.getElementById('filter-btn');
+const filterDropdown = document.getElementById('filter-dropdown');
+
+filterBtn.addEventListener('click', () => {
+  filterDropdown.style.display = filterDropdown.style.display === 'none' ? 'block' : 'none';
+});
+</script>
+    <div class="container">
+        <h1>MOVIE RECOMMENDATION SYSTEM</h1>
+        <div class="search-container">
+            <form  name= "sendmovie" action="." method="post">
+                <input type="text" name= "search-bar" id="search-bar" placeholder="Search for a movie" style="background-color: lightgray" >
+
+                <button type="submit" id="search-btn" style="background-color: #6CBAFE">Search</button>
+            </form>
+        </div>
+        <div class="result">
+            {% for item in list %}
+            <ul>
+
+                <li class="list-button" id="listButton"> {{item}} </li>
+
+            </ul>
+            {% endfor %}
+        </div>
+	</div>
+    <div id="myContainer" class="newcontainer">
+  This is a new container.
+</div>
+        </div>
+<div class="credits"><p>TTL Project 2024<br>Made By:<br>Aarushi Phulre - 21052722<br>Amitabh Bal - 21052731<br>Chhavi Soin - 21051988<br>Ketan Chauhan - 21052000<br>Sampreet Veer Singh - 21053101</p></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
